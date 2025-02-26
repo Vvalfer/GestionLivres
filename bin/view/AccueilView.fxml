@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+
+<VBox xmlns="http://javafx.com/javafx/8.0.171" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="controller.AccueilController" 
+      stylesheets="@style.css"
+      spacing="15" alignment="CENTER">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    
+    <!-- Titre principal -->
+    <Label text="Bienvenue à la Bibliothèque" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+    
+    <!-- Barre de recherche et connexion -->
+    <HBox spacing="10" alignment="CENTER">
+        <TextField fx:id="searchField" promptText="Rechercher un livre par titre ou auteur..." HBox.hgrow="ALWAYS" />
+        <Button text="Rechercher" onAction="#handleSearch" />
+        <Button fx:id="btnSeConnecter" text="Se connecter" onAction="#allerPageConnexion" />
+    </HBox>
+    
+    <!-- Liste des livres -->
+    <TableView fx:id="tableLivres" prefWidth="600">
+        <columns>
+            <TableColumn text="Titre" fx:id="colTitre" prefWidth="200"/>
+            <TableColumn text="Auteur" fx:id="colAuteur" prefWidth="150"/>
+            <TableColumn text="Disponible" fx:id="colDisponible" prefWidth="100"/>
+            <TableColumn text="ISBN" fx:id="colIsbn" prefWidth="150"/> 
+        </columns>
+    </TableView>
+    
+    <!-- Boutons de filtres -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Tous les livres" onAction="#handleFilterAll" />
+        <Button text="Filtrer par titre" onAction="#handleFilterByTitle" />
+        <Button text="Filtrer par auteur" onAction="#handleFilterByAuthor" />
+        <Button text="Filtrer par disponibilité" onAction="#handleFilterByDisponibility" />
+    </HBox>
+    
+    <!-- Bouton pour retourner un livre -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Retourner un livre" onAction="#handleRetour" />
+    </HBox>
+</VBox>

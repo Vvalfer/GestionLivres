@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.AdherentController"
+      stylesheets="@style.css"
+      spacing="15"
+      prefHeight="200"
+      alignment="CENTER">
+
+    <!-- Gère un padding interne pour éviter l’erreur "Unable to coerce ..." -->
+    <padding>
+        <Insets top="20.0" left="20.0" right="20.0" bottom="20.0"/>
+    </padding>
+
+    <!-- Titre principal -->
+    <Label text="Espace Adhérent" 
+           styleClass="label" 
+           style="-fx-font-size: 20; -fx-font-weight: bold;" />
+
+    <HBox minHeight="20" />
+
+    <HBox spacing="10" alignment="CENTER">
+      <!-- Bouton "Mes Emprunts" -->
+      <Button fx:id="btnVoirMesEmprunts" 
+          text="Mes Emprunts" 
+          onAction="#allerMesEmprunts"
+          styleClass="button"/>
+
+      <!-- Bouton "Modifier Mon Compte" -->
+      <Button fx:id="btnModifierCompte" 
+          text="Modifier Mon Compte" 
+          onAction="#modifierMonCompte"
+          styleClass="button"/>
+    </HBox>
+
+    <HBox minHeight="20" />
+
+    <!-- Bouton "Déconnexion" -->
+    <Button fx:id="btnDeconnexion" 
+        text="Déconnexion" 
+        onAction="#deconnexion"
+        styleClass="button"/>
+</VBox>

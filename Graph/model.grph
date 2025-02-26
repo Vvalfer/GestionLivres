@@ -1,0 +1,45 @@
+digraph ModelUML {
+  rankdir=TB;
+  fontsize=10;
+  fontname="Helvetica";
+  node [shape=record, fontname="Helvetica", fontsize=10, style="filled,rounded", fillcolor="#FFFFFF", color="#000000"];
+
+  /* Classe Auteur */
+  Auteur [label="{\&lt;&lt;Model&gt;&gt; Auteur | - prenom : String\l- nom : String\l- dateNaissance : String\l- description : String\l | + Auteur(String, String, String, String)\l+ getPrenom() : String\l+ setPrenom(String) : void\l+ getNom() : String\l+ setNom(String) : void\l+ getDateNaissance() : String\l+ setDateNaissance(String) : void\l+ getDescription() : String\l+ setDescription(String) : void}"];
+
+  /* Classe Emprunt */
+  Emprunt [label="{\&lt;&lt;Model&gt;&gt; Emprunt | - titre : StringProperty\l- auteur : StringProperty\l- dateEmprunt : StringProperty\l- dateRetour : StringProperty\l | + Emprunt(String, String, String, String)\l+ titreProperty() : StringProperty\l+ auteurProperty() : StringProperty\l+ dateEmpruntProperty() : StringProperty\l+ dateRetourProperty() : StringProperty\l+ getTitre() : String\l+ getAuteur() : String}"];
+
+  /* Classe Historique */
+  Historique [label="{\&lt;&lt;Model&gt;&gt; Historique | - id : String\l- isbn : String\l- dateEmprunt : String\l- dateRetour : String\l- adherentNum : String\l | + Historique(String, String, String, String, String)\l+ getId() : String\l+ getIsbn() : String\l+ getDateEmprunt() : String\l+ getDateRetour() : String\l+ getAdherentNum() : String\l+ setId(String) : void\l+ setIsbn(String) : void\l+ setDateEmprunt(String) : void\l+ setDateRetour(String) : void\l+ setAdherentNum(String) : void}"];
+
+  /* Classe Livre */
+  Livre [label="{\&lt;&lt;Model&gt;&gt; Livre | - titre : SimpleStringProperty\l- isbn : SimpleStringProperty\l- auteur : SimpleObjectProperty\&lt;Auteur&gt;\l- disponible : SimpleBooleanProperty\l | + Livre(String, String, Auteur, boolean)\l+ getTitre() : String\l+ setTitre(String) : void\l+ getIsbn() : String\l+ setIsbn(String) : void\l+ getAuteur() : Auteur\l+ setAuteur(Auteur) : void\l+ isDisponible() : boolean\l+ setDisponible(boolean) : void\l+ titreProperty() : SimpleStringProperty\l+ auteurProperty() : SimpleObjectProperty\&lt;Auteur&gt;\l+ disponibleProperty() : SimpleBooleanProperty}"];
+
+  /* Classe Utilisateur */
+  Utilisateur [label="{\&lt;&lt;Model&gt;&gt; Utilisateur | - id : SimpleIntegerProperty\l- email : SimpleStringProperty\l- nom : SimpleStringProperty\l- prenom : SimpleStringProperty\l- role : SimpleStringProperty\l | + Utilisateur(int, String, String, String, String)\l+ getId() : int\l+ getEmail() : String\l+ getNom() : String\l+ getPrenom() : String\l+ getRole() : String\l+ idProperty() : SimpleIntegerProperty\l+ emailProperty() : SimpleStringProperty\l+ nomProperty() : SimpleStringProperty\l+ prenomProperty() : SimpleStringProperty\l+ roleProperty() : SimpleStringProperty}"];
+
+  /* Classe SessionUtilisateur */
+  SessionUtilisateur [label="{\&lt;&lt;Model&gt;&gt; SessionUtilisateur | - instance : SessionUtilisateur\l- utilisateur : Utilisateur\l | + setUtilisateur(Utilisateur) : void\l+ getUtilisateur() : Utilisateur\l+ getRole() : String\l+ deconnecter() : void}"];
+
+  /* Classe Model */
+  Model [label="{\&lt;&lt;Model&gt;&gt; Model |  | + verifierConnexion(String, String) : Utilisateur\l+ getAllLivres() : List\&lt;Livre&gt;\l+ getHistorique() : ObservableList\&lt;Historique&gt;\l+ getAllAdherents() : ObservableList\&lt;Utilisateur&gt;\l+ verifierAdherentParEmail(String) : Utilisateur\l+ getUtilisateurById(int) : Utilisateur\l+ emprunterLivre(String, int) : boolean\l+ enregistrerEmprunt(String, int) : void\l+ enregistrerRetour(String) : void\l+ afficherErreur(String) : void\l+ afficherConfirmation(String) : void\l+ getEmpruntsByUtilisateur(int) : List\&lt;Emprunt&gt;\l+ updateUtilisateur(int, String, String, String, String) : boolean\l+ getDernierEmpruntPourAdherent(int) : String\l+ getDernierRetourPourAdherent(int) : String}"];
+
+  /* Associations UML */
+  /* Chaque Livre possède exactement un Auteur */
+  Livre -> Auteur [arrowhead="vee", label="1", fontsize=8];
+
+  /* Un Historique concerne un Livre */
+  Historique -> Livre [arrowhead="vee", label="0..*", fontsize=8];
+
+  /* Un Historique concerne un Utilisateur */
+  Historique -> Utilisateur [arrowhead="vee", label="0..*", fontsize=8];
+
+  /* Dépendances de Model vers les autres classes (notation UML : « uses ») */
+  Model -> Auteur [style="dashed", arrowhead="open", label="uses", fontsize=8];
+  Model -> Emprunt [style="dashed", arrowhead="open", label="uses", fontsize=8];
+  Model -> Historique [style="dashed", arrowhead="open", label="uses", fontsize=8];
+  Model -> Livre [style="dashed", arrowhead="open", label="uses", fontsize=8];
+  Model -> Utilisateur [style="dashed", arrowhead="open", label="uses", fontsize=8];
+  Model -> SessionUtilisateur [style="dashed", arrowhead="open", label="uses", fontsize=8];
+}

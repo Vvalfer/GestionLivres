@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.EmpruntController"
+      stylesheets="@style.css"         
+      spacing="10"
+      alignment="CENTER">
+
+    <!-- Titre principal -->
+    <Label text="Emprunter un Livre" styleClass="label" />
+
+    <!-- Affichage du Titre du livre -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Titre du livre :" styleClass="label" />
+        <Label fx:id="labelTitre" styleClass="label" />
+    </HBox>
+
+    <!-- Zone Email -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Votre Email :" styleClass="label" />
+        <TextField fx:id="emailField" styleClass="text-field" promptText="ex. user@example.com" />
+    </HBox>
+
+    <!-- Boutons Confirmer / Annuler -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Confirmer" onAction="#handleConfirmer" styleClass="button" />
+        <Button text="Annuler" onAction="#handleAnnuler" styleClass="button" />
+    </HBox>
+</VBox>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.ModifierCompteController"
+      stylesheets="@style.css"  
+      spacing="10.0"
+      alignment="CENTER">
+
+    <padding>
+        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+    </padding>
+
+    <Label text="Modifier mon compte" 
+           styleClass="label" 
+           style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+    <HBox minHeight="20" />
+
+    <!-- Nom -->
+    <HBox spacing="10.0" alignment="CENTER_LEFT">
+        <Label text="Nom :" styleClass="label"/>
+        <TextField fx:id="txtNom" styleClass="text-field"/>
+    </HBox>
+
+    <!-- Prénom -->
+    <HBox spacing="10.0" alignment="CENTER_LEFT">
+        <Label text="Prénom :" styleClass="label"/>
+        <TextField fx:id="txtPrenom" styleClass="text-field"/>
+    </HBox>
+
+    <!-- Email -->
+    <HBox spacing="10.0" alignment="CENTER_LEFT">
+        <Label text="Email :" styleClass="label"/>
+        <TextField fx:id="txtEmail" styleClass="text-field"/>
+    </HBox>
+
+    <!-- Nouveau mot de passe -->
+    <HBox spacing="10.0" alignment="CENTER_LEFT">
+        <Label text="Nouveau mot de passe :" styleClass="label"/>
+        <PasswordField fx:id="txtPassword" styleClass="text-field"/>
+    </HBox>
+
+    <!-- Confirmation du nouveau mot de passe -->
+    <HBox spacing="10.0" alignment="CENTER_LEFT">
+        <Label text="Confirmer mot de passe :" styleClass="label"/>
+        <PasswordField fx:id="txtPasswordConfirm" styleClass="text-field"/>
+    </HBox>
+
+    <!-- Boutons Valider / Annuler -->
+    <HBox spacing="15.0" alignment="CENTER">
+        <Button text="Valider" onAction="#handleValider" styleClass="button"/>
+        <Button text="Retour" onAction="#handleAnnuler" styleClass="button"/>
+    </HBox>
+</VBox>

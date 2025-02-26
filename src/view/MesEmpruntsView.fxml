@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx" 
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.MesEmpruntsController"
+      stylesheets="@style.css"
+      spacing="15"
+      alignment="CENTER">
+
+    <!-- Gérer le padding interne via la sous-balise -->
+    <padding>
+        <Insets top="20.0" left="20.0" right="20.0" bottom="20.0"/>
+    </padding>
+
+    <!-- Titre principal -->
+    <Label text="Mes emprunts"
+           styleClass="label"
+           style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+    <HBox minHeight="20" />
+
+    <!-- Barre de recherche -->
+    <HBox spacing="10" alignment="CENTER">
+        <TextField fx:id="searchField"
+                   styleClass="text-field"
+                   promptText="Rechercher un livre par titre ou auteur..." />
+    </HBox>
+
+    <!-- TableView pour afficher les emprunts -->
+    <TableView fx:id="tableEmprunts" 
+               prefHeight="400" 
+               prefWidth="600"
+               styleClass="table-view">
+        <columns>
+            <TableColumn fx:id="colTitre" text="Titre" prefWidth="200"/>
+            <TableColumn fx:id="colAuteur" text="Auteur" prefWidth="150"/>
+            <TableColumn fx:id="colDateEmprunt" text="Date Emprunt" prefWidth="125"/>
+            <TableColumn fx:id="colDateRetour" text="Date Retour" prefWidth="125"/>
+        </columns>
+    </TableView>
+
+    <!-- Bouton de Retour -->
+    <Button fx:id="btnRetour"
+            text="Retour"
+            onAction="#handleRetour"
+            styleClass="button" />
+</VBox>

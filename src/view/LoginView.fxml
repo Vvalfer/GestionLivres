@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.LoginController"
+      stylesheets="@style.css"
+      spacing="15"
+      alignment="CENTER">
+
+    <!-- Gérer le padding interne pour éviter l'erreur "Unable to coerce ..." -->
+    <padding>
+        <Insets top="20.0" left="20.0" right="20.0" bottom="20.0"/>
+    </padding>
+
+    <!-- Titre -->
+    <Label text="Connexion" styleClass="label" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+    <!-- Champ Email -->
+    <TextField fx:id="emailField" 
+               promptText="Email"
+               styleClass="text-field" />
+
+    <!-- Champ Mot de passe -->
+    <PasswordField fx:id="passwordField"
+                   promptText="Mot de passe"
+                   styleClass="text-field" />
+
+    <!-- Boutons : Se Connecter / Retour -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button fx:id="btnLogin"
+                text="Se connecter"
+                onAction="#handleLogin"
+                styleClass="button"/>
+        
+        <Button text="Retour"
+                onAction="#handleRetourAccueil"
+                styleClass="button"/>
+    </HBox>
+</VBox>

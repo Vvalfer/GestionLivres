@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.HistoriqueController"
+      stylesheets="@style.css"
+      styleClass="root"
+      spacing="15"
+      alignment="CENTER">
+
+    <padding>
+        <Insets top="20.0" left="20.0" right="20.0" bottom="20.0"/>
+    </padding>
+
+    <!-- Titre de la page -->
+    <Label text="Historique des emprunts et retours"
+           styleClass="label"
+           style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+    
+    <HBox minHeight="20" />
+
+    <!-- TableView de l'historique -->
+    <TableView fx:id="tableHistorique"
+               prefWidth="800"
+               prefHeight="500"
+               styleClass="table-view">
+        <columns>
+            <TableColumn fx:id="colIsbn" text="ISBN" prefWidth="180"/>
+            <!-- On va afficher Nom+Prénom au lieu de l'ID -->
+            <TableColumn fx:id="colAdherentNum" text="Adhérent" prefWidth="200"/>
+            <TableColumn fx:id="colDateEmprunt" text="Date Emprunt" prefWidth="200"/>
+            <TableColumn fx:id="colDateRetour" text="Date Retour" prefWidth="200"/>
+        </columns>
+    </TableView>
+
+    <HBox minHeight="20" />
+
+    <!-- Bouton de retour -->
+    <Button fx:id="btnRetour"
+            text="Retour"
+            onAction="#retourBibliothecaire"
+            styleClass="button"/>
+</VBox>
